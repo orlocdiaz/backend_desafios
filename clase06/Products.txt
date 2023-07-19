@@ -1,0 +1,12 @@
+[
+  {"id":1,"title":"Coca Cola","description":"Descripción de producto Coca Cola","price":23,"thumbnail":"No Img","code":"111","stock":100},
+  {"id":2,"title":"Pepsi","description":"Descripción de producto Pepsi","price":20,"thumbnail":"No Img","code":"222","stock":98},
+  {"id":3,"title":"Sprite","description":"Descripción de producto Sprite","price":21,"thumbnail":"No Img","code":"333","stock":115},
+  {"id":4,"title":"Fanta","description":"Descripción de producto Fanta","price":22,"thumbnail":"No Img","code":"444","stock":125},
+  {"id":5,"title":"Dr Pepper","description":"Descripción de producto Dr Pepper","price":25,"thumbnail":"No Img","code":"555","stock":90},
+  {"id":6,"title":"Seven Up","description":"Descripción de producto Seven Up","price":20,"thumbnail":"No Img","code":"666","stock":110},
+  {"id":7,"title":"Mirinda","description":"Descripción de producto Mirinda","price":22,"thumbnail":"No Img","code":"777","stock":105},
+  {"id":8,"title":"Manzanita","description":"Descripción de producto Manzanita","price":21,"thumbnail":"No Img","code":"888","stock":97},
+  {"id":9,"title":"Colombiana","description":"Descripción de producto Colombiana","price":23,"thumbnail":"No Img","code":"999","stock":112},
+  {"id":10,"title":"Fresca","description":"Descripción de producto Fresca","price":20,"thumbnail":"No Img","code":"123","stock":107}
+]

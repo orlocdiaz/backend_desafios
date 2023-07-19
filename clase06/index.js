@@ -52,7 +52,7 @@ export default class ProductManager {
     if (product) {
       return product;
     } else {
-      console.error('Not found');
+      throw new Error('El producto no existe');
     }
   }
 

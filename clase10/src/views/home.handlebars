@@ -1,0 +1,15 @@
+<div class='container'>
+  <div class='products'>
+    {{#each this}}
+      {{#if title}}
+        <div class='product'>
+          <img src='{{thumbnails}}' alt='{{title}}' />
+          <h3>{{title}}</h3>
+          <h5>{{category}}</h5>
+          <p>{{description}}</p>
+          <strong>${{price}}</strong>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>

@@ -23,7 +23,14 @@ module.exports = class ProductManager {
       );
       this.products = fileData;
     }
-    this.products.push(product);
+    const prod = product;
+    if (!this.products.length) {
+      prod.id = 1;
+    } else {
+      prod.id = this.products[this.products.length - 1].id + 1;
+    }
+    prod.status = !prod.status && true;
+    this.products.push(prod);
     await fs.promises.writeFile(this.path, JSON.stringify(this.products));
   }
 

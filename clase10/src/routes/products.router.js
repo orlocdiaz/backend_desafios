@@ -1,7 +1,4 @@
 const ProductManager = require('../controllers/ProductManager.js');
-// const socketServer = require('../app.js');
-// const { io } = require('socket.io');
-// const socket = io();
 const MyProducts = new ProductManager();
 
 //* GET PRODUCTS
@@ -61,22 +58,12 @@ async function addProduct(req, res) {
         throw new Error('Por favor llena los campos obligatorios');
       }
     }
-    //* ID and Status
-    if (!products.length) {
-      product.id = 1;
-    } else {
-      product.id = products[products.length - 1].id + 1;
-    }
-    product.status = !product.status && true;
     //* Check if duplicated
     const duplicated = products.find((add) => add.code === product.code);
     if (duplicated) {
       throw new Error('El código ya esta registrado');
     } else {
       await MyProducts.addProducts(product);
-      // socket.emit("server: post", product)
-      // console.log(socketServer);
-      // socketServer.socket.emit('server: post', product);
       await res.status(200).send({
         status: 'Success',
         message: 'El producto se agregó exitosamente',

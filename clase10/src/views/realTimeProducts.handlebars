@@ -1,35 +1,28 @@
-<div class='container'>
-  <div class='products'>
-    {{#each this}}
-      {{#if title}}
-        <div class='product'>
-          <img src='{{thumbnails}}' alt='{{title}}' />
-          <h3>{{title}}</h3>
-          <h5>{{category}}</h5>
-          <p>{{description}}</p>
-          <strong>${{price}}</strong>
-        </div>
-      {{/if}}
-    {{/each}}
-  </div>
-  <form action='/api/productos' method='post'>
-    <label for='title'>Product name: </label>
-    <input type='text' name='title' id='inTitle' />
-    <label for='description'>Description </label>
-    <textarea name='description' id='inDesc' cols='30' rows='10'></textarea>
-    <label for='code'>Code: </label>
-    <input type='text' name='code' id='inCode' />
-    <label for='price'>Price: </label>
-    <input type='number' name='price' id='inPrice' />
-    <label for='stock'>Stock: </label>
-    <input type='number' name='stock' id='inStock' />
-    <label for='category'>Category: </label>
-    <input type='text' name='category' id='inCat' />
-    <label for='image'>Image URL: </label>
-    <input type='text' name='image' id='inImage' />
-    <button type='submit' onclick='addSocketProduct()'>Send</button>
-  </form>
-</div>
+<main class='container'>
+  <h1 class="title">My Products</h1>
+  <section class='products'>
+  </section>
+  <form class="addProducts" >
+    <fieldset>
+      <legend>Add Product</legend>
+      <label for="title">Title: </label>
+      <input type="text" name="title" id="title">
+      <label for="description">Description: </label>
+      <input name="description" id="description">
+      <label for="code">Code: </label>
+      <input type="text" name="code" id="code">
+      <label for="price">Price: </label>
+      <input type="number" name="price" id="price">
+      <label for="stock">Stock: </label>
+      <input type="number" name="stock" id="stock">
+      <label for="category">Category: </label>
+      <input type="text" name="category" id="category">
+      <label for="thumbnails">Image URL: </label>
+      <input type="text" name="thumbnails" id="thumbnails">
+      <button type="submit" id="addProduct">Add</button>
+    </fieldset>
+  </form class="addProducts">
+</main> 
 
 <script src='socket.io/socket.io.js'></script>
 <script src='scripts/rtProducts.js'></script>

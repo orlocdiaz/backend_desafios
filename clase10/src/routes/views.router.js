@@ -15,8 +15,8 @@ async function homeProducts(req, res) {
 //* REALTIME PRODUCTS
 async function socketProducts(req, res) {
   try {
-    const products = await MyProducts.getProducts();
-    await res.render('realTimeProducts', products);
+    // const products = await MyProducts.getProducts();
+    await res.render('realTimeProducts');
   } catch (error) {
     await res.status(404).send({ status: 'Fail', message: error.message });
   }

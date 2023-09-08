@@ -1,5 +1,5 @@
 function homeSocket(io) {
-  io.on('connection', (socket) => {
+  io.of('/').on('connection', (socket) => {
     console.log('User connected for home');
   });
 }

@@ -23,10 +23,12 @@ class ProductsController {
     //* GET Limited Products
     if (limit) {
       const limitedProducts = products.slice(0, parseInt(limit));
-      return res.status(200).json(limitedProducts);
+      res.status(200).json(limitedProducts);
+      return limitedProducts;
     } else {
       //* GET All Products
-      return res.status(200).json(products);
+      res.status(200).json(products);
+      return products;
     }
   };
 
@@ -36,7 +38,8 @@ class ProductsController {
     const productById = await this.manager.getById(id);
     const product = productById.item;
 
-    return await res.status(200).json(product);
+    res.status(200).json(product);
+    return product;
   };
 
   //* ADD
@@ -58,8 +61,9 @@ class ProductsController {
     //* Set product status
     product.status = !product.status && true;
 
-    const added = await ProductsService.add(product);
-    return res.status(200).json(added);
+    const added = await this.manager.add(product);
+    res.status(200).json(added);
+    return added;
   };
 
   //* UPDATE
@@ -79,6 +83,7 @@ class ProductsController {
     const updated = await ProductsService.update(index, product);
 
     res.status(200).json(updated);
+    return updated.product;
   };
 
   //* DELETE
@@ -90,7 +95,10 @@ class ProductsController {
 
     const deleted = await ProductsService.delete(index);
     res.status(200).json(deleted);
+    return deleted;
   };
+
+  //* SOCKET
 }
 
 module.exports = new ProductsController();

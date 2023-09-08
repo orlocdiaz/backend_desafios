@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const mongoose = require('./config/dbConfig');
 
 const errorHandler = require('./middlewares/errorHandler');
-const socketConfig = require('./config/socketConfig');
+const SocketConfig = require('./config/socketConfig');
 const router = require('./routes');
 
 const { PORT } = process.env;
@@ -25,21 +25,13 @@ app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
-socketConfig(server, app);
+SocketConfig(server);
+
+// app.set('socketio', socket);
 
 app.use('/', router);
 
 app.use(errorHandler);
-
-/* app.get('/', (req, res) => {
-  res.render('home');
-});
-app.get('/chat', (req, res) => {
-  res.render('chat');
-});
-app.get('/products', (req, res) => {
-  res.render('products');
-}); */
 
 server.listen(PORT, () => {
   console.log(`Server running: http://localhost:${PORT}`);

@@ -1,6 +1,19 @@
-<div>
-  home
-</div>
+<main class='container'>
+  <h1>Home Products</h1>
+  <section class='products'>
+    {{#each this}}
+      {{#if title}}
+        <div class='product'>
+          <img src='{{thumbnails}}' alt='{{title}}' class='productImg' />
+          <h3>{{title}}</h3>
+          <h5>{{category}}</h5>
+          <p>{{description}}</p>
+          <strong>${{price}}</strong>
+        </div>
+      {{/if}}
+    {{/each}}
+  </section>
+</main>
 
 <script src='socket.io/socket.io.js'></script>
 <script src='scripts/homeScript.js'></script>

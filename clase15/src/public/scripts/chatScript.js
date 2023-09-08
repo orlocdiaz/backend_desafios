@@ -6,7 +6,7 @@ const sendChat = document.getElementById('sendChat');
 
 let user;
 
-socket.on('login', () => {
+socket.on('S-login', () => {
   Swal.fire({
     title: 'Log in',
     html: `<input type="text" id="login" class="swal2-input" placeholder="Email">`,
@@ -36,14 +36,30 @@ socket.on('login', () => {
         background: 'white',
       },
     }).showToast();
-    socket.emit('logged');
+    socket.emit('C-loggedIn', user);
   });
+});
+
+socket.on('S-userConn', (user) => {
+  Toastify({
+    text: `${user} has joined the room!`.trim(),
+    duration: 2000,
+    newWindow: true,
+    close: true,
+    gravity: 'bottom',
+    position: 'right',
+    stopOnFocus: true,
+    style: {
+      color: 'black',
+      background: 'white',
+    },
+  }).showToast();
 });
 
 chatBox.addEventListener('keyup', (event) => {
   if (event.key === 'Enter') {
     if (chatBox.value.trim().length > 0) {
-      socket.emit('message', { user, message: chatBox.value.trim() });
+      socket.emit('C-message', { user, message: chatBox.value.trim() });
       chatBox.value = '';
     }
   }
@@ -51,12 +67,12 @@ chatBox.addEventListener('keyup', (event) => {
 
 sendChat.addEventListener('click', () => {
   if (chatBox.value.trim().length > 0) {
-    socket.emit('message', { user, message: chatBox.value.trim() });
+    socket.emit('C-message', { user, message: chatBox.value.trim() });
     chatBox.value = '';
   }
 });
 
-socket.on('messages', (data) => {
+socket.on('S-messages', (data) => {
   let output = `<ul class="list-group" >`;
   if (data) {
     data.forEach((item) => {

@@ -1,9 +1,9 @@
-function productsSocket(io, product) {
-  // console.log(io.on('connection', () => 'Si'));
-  io.on('connection', (socket) => {
-    console.log('On');
+const ProductsService = require('../services/products');
 
-    socket.emit('S-SI');
+function productsSocket(io) {
+  io.of('/products').on('connection', async (socket) => {
+    const products = await ProductsService.get();
+    socket.emit('S-Get', products);
   });
 }
 

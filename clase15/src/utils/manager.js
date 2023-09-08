@@ -90,6 +90,11 @@ class Manager {
     }
     return newId;
   };
+
+  add = async (item) => {
+    const added = await this.service.add(item);
+    return added;
+  };
 }
 
 module.exports = Manager;
